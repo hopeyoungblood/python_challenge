@@ -6,7 +6,7 @@ f = open("PyPoll.txt", "w")
 
 candidate_list = {}
 total_votes = 0
-# candidate_name = 0
+candidate_name = 0
 percentage_won = 0
 votes_won = 0
 winner = 0
@@ -27,37 +27,11 @@ with open(election_data,'r') as csvfile:
 
       total_votes = total_votes + 1
 
-        #   candidates = candidates + 1
-
       if candidate_name in candidate_list:
         candidate_list[candidate_name] = candidate_list[candidate_name] + 1
       else:
         candidate_list[candidate_name] = 1
     print(candidate_list)
-
-    # for candidate in csv.DictReader(csvfile):
-    #     print(candidate)
-    
-
-    # candidates = {}
-    # for row in csvreader:
-    #     key = row[2]
-    #     if key in candidates:
-    #         #duplicate row handling here
-    #         pass
-    #     candidates[key] = row[3:]
-    # print(candidates)
-
-
-    # dict_reader = csv. DictReader(election_data)
-    # ordered_dict_from_csv = list(dict_reader)[0]
-    # dict_from_csv = dict(ordered_dict_from_csv)
-    # print(dict_from_csv)
-
-    # candidates = {}
-    # candidates = dict()
-
-
 
 file_name = "PyPoll.txt"
  
