@@ -27,6 +27,8 @@ with open(election_data,'r') as csvfile:
 
       total_votes = total_votes + 1
 
+        #   percentage_won = percentage_won + 1
+
       if candidate_name in candidate_list:
         candidate_list[candidate_name] = candidate_list[candidate_name] + 1
       else:
@@ -37,22 +39,25 @@ file_name = "PyPoll.txt"
  
 with open(file_name, "a") as txt_file:
  
-   txt_file.write("Election Results\n")
-   txt_file.write("---------------\n")
+    txt_file.write("Election Results\n")
+    txt_file.write("---------------\n")
  
-   txt_file.write(f"Total Votes {total_votes}\n")
-   txt_file.write("---------------\n")
- 
-   txt_file.write(f"Khan: {percentage_won}\n {votes_won}\n")
+    txt_file.write(f"Total Votes {total_votes}\n")
+    txt_file.write("---------------\n")
+   
+    for k, v, in candidate_list.items():
+        txt_file.write(str(k) + ": " + str(v) + "\n\n")
 
-   txt_file.write(f"Correy: {percentage_won}\n {votes_won}\n")
+        #    txt_file.write(f"Khan: {percentage_won}\n {votes_won}\n")
 
-   txt_file.write(f"Li: {percentage_won}\n {votes_won}\n")
+        #    txt_file.write(f"Correy: {percentage_won}\n {votes_won}\n")
 
-   txt_file.write(f"O'Tooley: {percentage_won}\n {votes_won}\n")
-   txt_file.write("---------------\n")
- 
-   txt_file.write(f"Winner: {winner}\n")
+        #    txt_file.write(f"Li: {percentage_won}\n {votes_won}\n")
+
+        #    txt_file.write(f"O'Tooley: {percentage_won}\n {votes_won}\n")
+        #    txt_file.write("---------------\n")
+        
+        #    txt_file.write(f"Winner: {winner}\n")
  
 file_name = "PyPoll.txt"
 
