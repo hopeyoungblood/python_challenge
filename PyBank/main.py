@@ -11,10 +11,10 @@ months = 0
 total_change = 0
 total_months = 0
 num_months = []
-profits_losses = []
+net_total = 0
 average_change = 0
 greatest_increase = 0
-greatest_decrease = 0
+greatest_decrease = 999999
 
 
 with open(budget_data,'r') as csvfile:
@@ -27,52 +27,54 @@ with open(budget_data,'r') as csvfile:
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
 
-    # profits_losses.append(total_change)
-    # print(profits_losses)
-
     # Read each row of data after the header
     for row in csvreader:
         print(row)
+
+        net_total = net_total + int(row[1])
         
         total_months = total_months + 1
         print(total_months)
+
+        current = int(row[1])
         
-        total_change = total_change + int(row[1])
-        print(total_change)
+        # total_change = total_change + int(row[1])
+        # print(total_change)
 
-        average_change = (last - first) / total_months
-        print(average_change)
-
-        # profits_losses.append(total_change)
-        # print(profits_losses)
+        # average_change = (last - first) / total_months
+        # print(average_change)
 
         # # # step two just find the difference between the two months
-        current = int(row[1])
-
-        if months > 1:
+       
+        if total_months > 1:
             change = current - last
             print(change)  
 
-            total_months = total_months + 1
-            print(total_months) 
+            # total_months = total_months + 1
+            # print(total_months) 
 
             total_change = total_change + change
             print(total_change)
 
-            average_change = (last - first) / (total_months + 1)
+            average_change = total_change / (total_months - 1)
             print(average_change)
+            
+            if change > greatest_increase:
+                greatest_increase = change
+                greatest_increase_month = str(row[0])
+
+            if change < greatest_decrease:
+                 greatest_increase = change  
+                 greatest_decrease_month = str(row[0])
 
         last = int(row[1])
         print(last)
 
-        # num_months.append = total_months
-        # print(num_months)
-
         # profits_losses.append(total_change)
         # print(profits_losses)
-            
-        # greatest_increase = 
-        # greatest_decrease = 
+
+        # num_months.append = total_months
+        # print(num_months)
     
 file_name = "PyBank.txt"
 
@@ -84,7 +86,7 @@ with open(file_name, "a") as txt_file:
     
     txt_file.write(f"Total Months: {total_months}\n")
     
-    txt_file.write(f"Net Total: ${total_change}\n")
+    txt_file.write(f"Net Total: ${net_total}\n")
      
     txt_file.write(f"Average Change: ${average_change}\n")
 
