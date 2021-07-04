@@ -14,7 +14,7 @@ num_months = []
 net_total = 0
 average_change = 0
 greatest_increase = 0
-greatest_decrease = 999999
+greatest_decrease = 99999
 
 
 with open(budget_data,'r') as csvfile:
@@ -37,12 +37,6 @@ with open(budget_data,'r') as csvfile:
         print(total_months)
 
         current = int(row[1])
-        
-        # total_change = total_change + int(row[1])
-        # print(total_change)
-
-        # average_change = (last - first) / total_months
-        # print(average_change)
 
         # # # step two just find the difference between the two months
        
@@ -64,17 +58,11 @@ with open(budget_data,'r') as csvfile:
                 greatest_increase_month = str(row[0])
 
             if change < greatest_decrease:
-                 greatest_increase = change  
-                 greatest_decrease_month = str(row[0])
+                greatest_decrease = change  
+                greatest_decrease_month = str(row[0])
 
         last = int(row[1])
         print(last)
-
-        # profits_losses.append(total_change)
-        # print(profits_losses)
-
-        # num_months.append = total_months
-        # print(num_months)
     
 file_name = "PyBank.txt"
 
@@ -88,10 +76,10 @@ with open(file_name, "a") as txt_file:
     
     txt_file.write(f"Net Total: ${net_total}\n")
      
-    txt_file.write(f"Average Change: ${average_change}\n")
-
-    txt_file.write(f"Greatest Increase in Profits: {greatest_increase}\n")
-
-    txt_file.write(f"Greatest Decrease in Profits: {greatest_decrease}\n")
+    txt_file.write(f"Average Change: ${average_change:.2f}\n")
+    
+    txt_file.write(f"Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase})\n")
+    
+    txt_file.write(f"Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decrease})\n")
 
 file_name = "PyBank.txt"
