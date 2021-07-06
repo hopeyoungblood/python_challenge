@@ -14,11 +14,9 @@ percentages = {}
 
 with open(election_data,'r') as csvfile:
 
-    # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
     print(csvreader)
     
-    # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
 
@@ -52,7 +50,7 @@ with open(file_name, "a") as txt_file:
     txt_file.write("---------------\n")
    
     for k, v, in candidates.items():
-         txt_file.write(str(k) + ": " + str(v) + "\n")
+      txt_file.write(str(k) + ": " + str(percentages[k]) + "% " + "(" + str(v) + ")" + "\n")
   
     txt_file.write("---------------\n")
 
