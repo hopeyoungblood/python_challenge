@@ -10,7 +10,7 @@ percentage_won = 0
 votes_won = 0
 most_votes = 0
 candidates = {}
-# candidate_list = []
+percentages = {}
 
 with open(election_data,'r') as csvfile:
 
@@ -28,20 +28,18 @@ with open(election_data,'r') as csvfile:
 
       total_votes = total_votes + 1
 
-      percentage_won = (votes_won / total_votes) * 100
-
       if candidate_name in candidates:
         candidates[candidate_name] = candidates[candidate_name] + 1
       else:
         candidates[candidate_name] = 1
         print(candidates)
-    
+
     for key, value in candidates.items():
       if value > most_votes:
        candidate_name = key
        most_votes = value
-        
-
+      percentages[key] = round((value / total_votes) * 100, 2)
+      print(percentages)
 
 file_name = "PyPoll.txt"
  
